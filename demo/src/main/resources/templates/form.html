@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta charset="utf-8">
+    <title>Login/Register</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="jvscrpt.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header>
+    <div class="wrapper">
+        <a th:href="@{/}">
+            <img src="images/logo.jpg" id="logo" alt="komy logo" height="100" width= "150"></a>
+        <nav>
+            <a class="burger-nav" ></a>
+            <ul class="nav-links">
+                <li ><a th:href="@{/Home}">Home</a></li>
+                <li ><a th:href="@{/bookmarks}">Bookmarks</a></li>
+                <li ><a th:href="@{/userInfo}">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- /login?error=true -->
+<div th:if="${#request.getParameter('error') == 'true'}"
+     style="color:#ff0000;margin:10px 0px;">
+    Login Failed!!!<br />
+    Reason :
+    <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+          th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+                Static summary
+         </span>
+
+</div>
+Username/pass:
+<ul>
+    <li>m@gmail.com/123</li>
+    <li>k@gmail.com/123</li>
+</ul>
+<div class="form-container">
+    <div class="form-box">
+        <div class="btn-box">
+            <div id="btn"></div>
+            <button type="button" class="toogle-btn" onclick="login()">Login</button>
+            <button type="button" class="toogle-btn" onclick="register()">Register</button>
+        </div>
+
+        <form name='f' th:action="@{/j_spring_security_check}" method='POST' id="login" class="input-group">
+            <input type='email' name='username' value='' class="input-field" id="mail_log" placeholder="Email"  size="30" required>
+            <input type='password' name='password' class="input-field" id="password_log" placeholder="Password" required>
+            <input type="checkbox" class="check-box"><span>Remember Password</span>
+            <button type = "submit" class="submit-btn">Login</button>
+        </form>
+
+        <form action="#" th:action="@{/register}" th:object="${appUser}" method="post" id="register" class="input-group">
+            <input type="text"  class="input-field" id="user" placeholder="Username" >
+            <input type="email"  th:field="*{id}" class="input-field" id="mail_reg" placeholder="Email" pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" size="30" required>
+            <input type="password" th:field="*{content}" class="input-field" id="password_reg" placeholder="Password" required>
+            <input type="checkbox" class="check-box"><span>I agree to the terms & conditions</span>
+            <button type = "submit" class="submit-btn">Register</button>
+        </form>
+    </div>
+</div>
+
+<br>
+
+<footer id="footer_form">
+    <div class="wrapper">
+        <ul>
+            <li> Michalakakou Konstantina</li>
+            <li> Papadima Myrto</li>
+        </ul>
+        <ul>
+            <li> Web developing and programming</li>
+            <li> &copy; All rights reserved 2020</li>
+        </ul>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta charset="utf-8">
+    <title>Komy movies</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="jvscrpt.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<header>
+    <div class="wrapper">
+        <a th:href="@{/Home}">
+            <img src="images/logo.jpg" id="logo" alt="komy logo" height="100" width= "150"></a>
+        <nav>
+            <a class="burger-nav" ></a>
+            <ul class="nav-links">
+                <li ><a th:href="@{/Home}">Home</a></li>
+                <li ><a th:href="@{/bookmarks}">Bookmarks</a></li>
+                <li ><a th:href="@{/userInfo}">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<h1>Logout Successful!</h1>
+
+<footer id="footer">
+    <div class="wrapper">
+        <ul>
+            <li> Michalakakou Konstantina</li>
+            <li> Papadima Myrto</li>
+        </ul>
+        <ul>
+            <li> Web developing and programming</li>
+            <li> &copy; All rights reserved 2020</li>
+        </ul>
+    </div>
+</footer>
+</body>
+
+</html>
